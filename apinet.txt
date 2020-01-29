@@ -1,0 +1,268 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Table, Button, Modal, ModalHeader, ModalBody, FormGroup, ModalFooter, Input, InputGroup, Label, InputGroupAddon, InputGroupText } from 'reactstrap';
+
+class App extends Component {
+    state = {
+        jobs: [],
+        newJobData: {
+            location: '',
+            company: '',
+            jobText: '',
+            applied: '',
+            stack: ''
+        },
+        editJobData: {
+            id: 0,
+            location: '',
+            company: '',
+            jobText: '',
+            applied: '',
+            stack: ''
+        },
+        showJobData: {
+            id: 0,
+            jobText: ''
+        },
+        newJobModel: false,
+        editJobModel: false,
+        showJobModel: false
+    }
+    componentWillMount() {
+        axios.get('https://localhost:44345/Api/Jobs/').then((response) => {
+            this.setState({
+                jobs: response.data
+            })
+        });
+    }
+    toggleNewJobModel() {
+        this.setState({
+            newJobModel: !this.state.newJobModel
+        });
+    }
+    toggleEditJobModel() {
+        this.setState({
+            editJobModel: !this.state.editJobModel
+        }); }
+    toggleShowJobModel() {
+        this.setState({
+            showJobModel: !this.state.showJobModel
+        });
+    }
+    addJob() {
+        axios.post('https://localhost:44345/Api/Jobs', this.state.newJobData).then((response) => {
+            let { jobs } = this.state;
+            jobs.push(response.data);
+            this.setState({
+                jobs, newJobModel: false, newJobData: {
+                    location: '',
+                    company: '',
+                    jobText: '',
+                    applied: '',
+                    stack: ''
+                }
+            });
+
+        });
+    }
+    updateJob() {
+        let { id, location, company, jobText, applied, stack } = this.state.editJobData;
+
+        axios.put('https://localhost:44345/Api/Jobs/' + this.state.editJobData.id, {
+            id, location, company, jobText, applied, stack
+        }).then((response) => {
+            this.refreshJobs();
+            this.setState({
+                editJobModel: false, editJobData: { id: 0, location: '', company: '', jobText: '', applied: '', stack: ''}
+            })
+        })
+    }
+
+    editJob(id, location, company, jobText, applied, stack) {
+        this.setState({
+            editJobData: { id, location, company, jobText, applied, stack }, editJobModel: !this.state.editJobModel
+        });
+    }
+    showJob(id, jobText) {
+        this.setState({
+            showJobData: { id, jobText }, showJobModel: !this.state.showJobModel
+        });}
+    refreshJobs() {
+        axios.get('https://localhost:44345/Api/Jobs/').then((response) => {
+            this.setState({
+                jobs: response.data
+            })
+        });
+    }
+    deleteJob(id) {
+        axios.delete('https://localhost:44345/Api/Jobs/' + id).then((response) => {
+            this.refreshJobs();
+        });
+    }
+
+    render() {
+        let jobs = this.state.jobs.map((job) => {
+            return (
+                <tr key={job.id}>
+                    <td>{job.applied}</td>
+                    <td>{job.stack}</td>
+                    <td>{job.location}</td>
+                    <td>{job.company}</td>
+                    <td><Button size="sm" color="success" onClick={this.showJob.bind(this, job.id, job.jobText)}>Job
+</Button></td>
+                    <td>
+                        <Button color="primary" size="sm" className="mr-2 centerButton" onClick={this.editJob.bind(this, 
+job.id, job.location, job.company, job.jobText, job.applied, job.stack)}>Update</Button>
+                        <Button color="danger" size="sm" onClick={this.deleteJob.bind(this, job.id)}>Delete</Button>
+                    </td>
+                </tr>
+            )
+        });
+
+        return (
+
+            <div className='App container '>
+                <div className="centerInfo">
+                    <h2 >My Jobs App</h2>
+                    <Button color="primary" className="my-3 centerButton"
+ 			onClick={this.toggleNewJobModel.bind(this)}>Add a Job</Button>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <Modal isOpen={this.state.newJobModel} toggle={this.toggleNewJobModel.bind(this)}>
+                    <ModalHeader toggle={this.toggleNewJobModel.bind(this)}>Add a Job</ModalHeader>
+                    <ModalBody>
+                        <FormGroup>
+                            <Label for="company">Company</Label>
+                            <Input id="company" value={this.state.newJobData.company} onChange={(e) => {
+                                let { newJobData } = this.state;
+                                newJobData.company = e.target.value;
+                                this.setState({ newJobData });
+                            }} />
+                            <Label for="stack">Technology</Label>
+                            <Input id="stack" value={this.state.newJobData.stack} onChange={(e) => {
+                                let { newJobData } = this.state;
+                                newJobData.stack = e.target.value;
+                                this.setState({ newJobData })
+                            }} />
+                            < Label for="location" > Location</Label>
+                            <Input id="location" value={this.state.newJobData.location} onChange={(e) => {
+                                let { newJobData } = this.state;
+                                newJobData.location = e.target.value;
+                                this.setState({ newJobData })
+                            }} />
+                            <Label for="jobText">Posting</Label>
+                            <Input id="jobText" type="textarea" value={this.state.newJobData.jobText} onChange={(e) => {
+                                let { newJobData } = this.state;
+                                newJobData.jobText = e.target.value;
+                                this.setState({ newJobData })
+                            }} />
+                            <Label for="applied">Applied</Label>
+                            <Input id="applied" value={this.state.newJobData.applied} onChange={(e) => {
+                                let { newJobData } = this.state;
+                                newJobData.applied = e.target.value;
+                                this.setState({ newJobData })
+                            }} />
+                        </FormGroup>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="primary" onClick={this.addJob.bind(this)}>Add Job</Button>{' '}
+                        <Button color="secondary" onClick={this.toggleNewJobModel.bind(this)}>Cancel</Button>
+                    </ModalFooter >
+                </Modal >
+
+
+
+
+
+
+                <Modal isOpen={this.state.editJobModel} toggle={this.toggleEditJobModel.bind(this)}>
+                    <ModalHeader toggle={this.toggleEditJobModel.bind(this)}>Edit Job</ModalHeader>
+                    <ModalBody>
+                        <FormGroup>
+                            <Label for="company">Company</Label>
+                            <Input id="company" value={this.state.editJobData.company} onChange={(e) => {
+                                let { editJobData } = this.state;
+                                editJobData.company = e.target.value;
+                                this.setState({ editJobData });
+                            }} />
+                            <Label for="stack">Technology</Label>
+                            <Input id="stack" value={this.state.editJobData.stack} onChange={(e) => {
+                                let { editJobData } = this.state;
+                                editJobData.stack = e.target.value;
+                                this.setState({ editJobData })
+                            }} />
+                            < Label for="location" > Location</Label>
+                            <Input id="location" value={this.state.editJobData.location} onChange={(e) => {
+                                let { editJobData } = this.state;
+                                editJobData.location = e.target.value;
+                                this.setState({ editJobData })
+                            }} />
+                            <Label for="jobText">Posting</Label>
+                            <Input id="jobText" type="textarea" value={this.state.editJobData.jobText} onChange={(e) => {
+                                let { editJobData } = this.state;
+                                editJobData.jobText = e.target.value;
+                                this.setState({ editJobData })
+                            }} />
+                            <Label for="applied">Applied</Label>
+                            <Input id="applied" value={this.state.editJobData.applied} onChange={(e) => {
+                                let { editJobData } = this.state;
+                                editJobData.applied = e.target.value;
+                                this.setState({ editJobData })
+                            }} />
+                        </FormGroup>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="info" onClick={this.updateJob.bind(this)}>Edit Job</Button>{' '}
+                        <Button color="secondary" onClick={this.toggleEditJobModel.bind(this)}>Cancel</Button>
+                    </ModalFooter >
+                </Modal >
+
+
+
+
+
+
+                <Modal className="modal-lg" isOpen={this.state.showJobModel} toggle={this.toggleShowJobModel.bind(this)}>
+                    <ModalHeader toggle={this.toggleShowJobModel.bind(this)}>listing</ModalHeader>
+                    <ModalBody>
+                        <p>
+                            {this.state.showJobData.jobText}
+                        </p>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="secondary" onClick={this.toggleShowJobModel.bind(this)}>Close</Button>
+                    </ModalFooter >
+                </Modal >
+
+                <Table size="sm" className="table table-bordered table-sm table-striped" >
+                    <thead className="thead-dark">
+                        <tr>
+                            <th>Applied</th>
+                            <th>Tech</th>
+                            <th>Site</th>
+                            <th>Company</th>
+                            <th>Listing</th>
+                            <th>Update Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {jobs}
+                    </tbody>
+                </Table>
+            </div >
+        );
+    }
+}
+
+export default App;
+
+
