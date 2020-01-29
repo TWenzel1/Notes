@@ -1,0 +1,4 @@
+ Update-Database -Migration CreateIdentitySchema
+Remove-Migration to whatever you want
+
+
