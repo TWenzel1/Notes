@@ -1,0 +1,58 @@
+string[] names = { "Tom", "Dick", "Harry","Jon","Fred"};
+
+IEnumerable<string> filterNames =
+       from n in names
+       where n.Contains("a")//or where (n => n.Length >=4);
+       orderby n.Length
+       select n.ToLower()
+       into noVowel
+       where noVowel.Length>2
+       orderby noVowel
+       select noVowel;;
+
+//var filternames = names.Where(n=> n.Length>=4);
+
+IEnumerable<string> query = names
+.Where(n => n.Contains("a"))
+.OrderBy(n => n.Length)
+.Select(n => n.ToUpper());
+
+
+foreach (var item in names)
+{
+ Console.Write(item);
+}
+
+List<int> timesTen = numbers
+.Select(n=>n*10)
+.ToList();  //turns into a list immediately
+
+IEnumerable<string> outerQuery = names.Where(n => n.Length ==
+                     names.OrderBy(n2 => n2.Length)
+                     .Select(n2 => n2.Length)
+                     .First());
+
+numbers.Count();numbers.Min();
+numbers.Contains(9);numbers.Any();
+numbers.Any(n=>n.%2 ==1);
+Regex.Replace(n, "[aeiou]", " ")
+
+var intermediate = from n in names
+select new{Original = n, NameUpper = n.ToUpper()};
+into item
+where item.NameUpper.Contains("o")
+select item.Original;
+
+or instead of into
+IEnumerable<string> outer = 
+from item in intermediate
+where item.NameUpper.Contains("o")
+select item.Original;
+
+
+IEnumerable<string> query =
+                from n in names
+                let vowelless = n.ToUpper()
+                where vowelless.Length > 2
+                orderby vowelless
+                select n;
