@@ -62,9 +62,13 @@ Connection string for server
 11.	Create a controller in the controller file
 12.	Test get, get/1, post, put, delete.
 13.	Code for Database first
-For adding to existing database
+1.	Code for Database first
 
-scaffold-dbcontext "Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SampleData; 
-Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+For adding to existing database
+scaffold-dbcontext "Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SampleData; Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+Connection string the same== For the DataContext the onConfig needs to be overridden
+And configuration needs to be done.
+
 
 
