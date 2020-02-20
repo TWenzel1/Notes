@@ -62,5 +62,9 @@ Connection string for server
 11.	Create a controller in the controller file
 12.	Test get, get/1, post, put, delete.
 13.	Code for Database first
-Scaffold-DbContext "Server=(localdb)\\mssqllocaldb; Database=aspnet-FlightAndHotel;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+For adding to existing database
+
+scaffold-dbcontext "Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SampleData; 
+Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
 
