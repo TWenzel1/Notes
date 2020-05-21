@@ -1,0 +1,13 @@
+Make a git repository on computer
+
+	mkdir directoryName
+	cd directoryName
+
+	git init
+
+after changes are made 
+
+git status
+
+git add "fileName"
+
