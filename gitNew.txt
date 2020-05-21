@@ -38,6 +38,15 @@ pull changes from github from others or file made on github
 	git pull origin master
 
 
+Changing status of commits
+
+	git reset "fileName"  //removes an added file 
+
+	git checkout -- "fileName"  //changes file back to commited status
+	
+	git diff  //lets you see what has changed
+
+
 
 
 	
