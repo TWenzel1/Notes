@@ -5,9 +5,43 @@ Make a git repository on computer
 
 	git init
 
+	.gitignore if you want hidden content
+
+
+connect to github
+
+	produce a git repository
+
+	git remote add origin https://github.com/TWenzel1/gitPro.git
+
+
+or clone a github repository
+
+	git clone https://github.com/TWenzel1/gitPro.git
+
+
 after changes are made 
 
-git status
+	git status
 
-git add "fileName"
+	git add "fileName"    or    git add .
+
+	git commit -m "notes"  or   git commit -a -m "notes"
+
+	git log to see log notes
+
+	git push -u origin master     or       git push if already used file
+
+
+pull changes from github from others or file made on github
+
+	git pull origin master
+
+
+
+
+	
+
+	
+
 
