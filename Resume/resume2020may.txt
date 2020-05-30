@@ -1,0 +1,88 @@
+
+
+Tim Wenzel
+7712 Caribou Ct.
+Fort Worth, TX 76137
+(817) 505-5109
+twenzeltwenzel@outlook.com
+
+OBJECTIVE:   I’m a recent graduate of Edge Tech Software Development Academy looking for a position as a .NET Developer but I’m happy to work with other technologies as well.  I enjoy building full stack C# MVC, and API applications in the ASP.Net, ASP.Net Core framework and Azure.  Other technologies that I’ve had the opportunity to work with include React, Angular, LINQ, Java, SQL, JavaScript, Node, Express, HTML, CSS.  
+
+EDUCATION:  
+Software Development Diploma (GPA 3.5)
+Edge Tech Academy, Arlington, TX
+
+B.S. University Studies (GPA 3.3)
+University of Mary, Bismarck, ND
+
+SKILLSET:
+•	C# ASP.Net MVC and API
+•	T-SQL, SQL, LINQ, MySQL, and SQL Server
+•	HTML, CSS, Javascript, Express, Node
+•	Azure
+•	Java
+
+PROJECTS:
+
+.NET CORE MVC WEBSTORE
+https://poolproductsdata.azurewebsites.net/
+This project is a multi-model web store that I made that includes authentication and authorization (some of these features are disabled so you can view the site fully).  It is deployed to Azure with a SQL Server database.  With this site you can:
+•	Search products
+•	Register
+•	Log In
+•	Add products to your Cart
+•	Provide your order details
+•	Complete your order
+
+.NET CORE MVC PRODUCT CRUD APP
+https://poolproductsdata.azurewebsites.net/Products/Index
+This site is a complimentary site to the above webstore.  This site would allow a manager or owner of the webstore to add or modify the products that would be seen on the webstore.  The site would determine what would be seen on the site and how it would be displayed.  It is also deployed with a SQL Server database on Azure with authorization and authentication (you can still view the whole site).  With this you can:
+•	Log in with an administrator password
+•	Search products
+•	Add new products
+•	Update product information 
+•	Update product settings
+
+
+
+
+
+
+
+
+
+EXPERIENCE:
+
+(2017-2019) ZS Pharma-AstraZeneca
+Plant Operator
+Coppell, Texas
+As a Plant Operator at AstraZeneca I would operate High Pressure Reactors, Filters, and Dryers to manufacture a new drug for people with Hyperkalemia (high potassium).  For software I would use SAP for inventory of chemicals, filters, and a few other items. While at AstraZeneca I was credited with coming up with a number of process improvements and troubleshooting a few major process problems.  
+
+(2015-2017) Wenzel Pools
+Manager, Owner
+Fort Worth, Texas
+In late 2015, I started my own pool service business in the Fort Worth to Southlake area.   I sold the business with 45 pools that I would service weekly.  Tasks that I learned to perform include Quickbooks bookkeeping, sales, and communication with customers effectively.  It was my first business and a great learning experience for me.  
+
+(2007-2015) Suncor
+West Plant Projects Coordinator
+OMD Operator
+Commerce City, Colorado
+While working as Suncor I was promoted to West Plant Project Coordinator for 18 months.  I would work on planning and coordination for capital projects at the west plant. While there we had many successful projects that I was able to have a major role in ensuring the project’s success.  As an OMD Operator at Suncor I was responsible for the safe transfer of products for the tank farm of the refinery.  
+
+
+REFERENCES:
+
+Rogger Boaitey, Instructor
+EdgeTech Academy
+rogger.boaitey@faculty.edgetechacademy.edu
+(214) 223-4886
+
+Gary James, Instructor/Manager
+EdgeTech Academy
+gjames@faculty.edgetechacademy.edu
+(817)  266-3251
+
+Eric Couch, Instructor
+EdgeTech Academy
+James.couch@faculty.edgetechacademy.edu
+	
